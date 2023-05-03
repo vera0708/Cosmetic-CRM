@@ -16,10 +16,10 @@ if (monthlyIncome < 0 || Number.isFinite(monthlyIncome) === false) {
             taxSum = monthlyIncome * tax;
             break;
         case (monthlyIncome > 15000 && monthlyIncome < 50000):
-            taxSum = monthlyIncome * highTax;
+            taxSum = 15000 * tax + (monthlyIncome - 15000) * highTax;
             break;
         case (monthlyIncome > 50000):
-            taxSum = monthlyIncome * extraTax;
+            taxSum = 15000 * tax + (35000) * highTax + (monthlyIncome - 50000) * extraTax;
             break;
     }
 console.log(`Ваша сумма налога: ${taxSum}`);
