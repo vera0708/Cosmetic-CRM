@@ -16,7 +16,3 @@ if (Number.isFinite(productPrice) === false) {
 
 
 const totalSum = productAmount * productPrice;
-
-// console.log('Тип переменной "количество товара"' + typeof (productAmount));
-// console.log('Тип переменной "цену товара"' + typeof (productPrice));
-// console.log(`Итого выбрано ${productAmount} единиц товара "${productName}" на общую сумму ${totalSum} рублей.`);
