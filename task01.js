@@ -1,13 +1,10 @@
 'use strict'
 // Первая задача:
-let taxSum = 0;
 
 const amountEU = +prompt('Введите сумму в евро');
 
 const rateUsdToEU = 1.2;
 const rateRurToUsd = 73;
-
-
 
 if (amountEU < 0 || Number.isFinite(amountEU) === false) {
     console.log("Вы ввели некорректную сумму")
