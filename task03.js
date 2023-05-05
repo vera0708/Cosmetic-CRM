@@ -70,26 +70,26 @@ const calculate = (sum, amountGoods, promo) => {
     return sumAfterAddDiscount;
 };
 
-const totalSum = calculate(9000, 5);
-console.log(`У вас не выполнено ни одно условие для скидок. Итоговая сумма ${totalSum}₽`);
+// const totalSum = calculate(9000, 5);
+// console.log(`У вас не выполнено ни одно условие для скидок. Итоговая сумма ${totalSum}₽`);
 
 // const totalSum1 = calculate(19000, 13);
-// console.log(`У вас больше 10 товаров. Применена скидка 3%. Итоговая сумма ${totalSum1}₽`);
+// console.log(`У вас больше ${amount} товаров. Применена скидка ${discountToAmount * 100}%. Итоговая сумма ${totalSum1}₽`);
 
 // const totalSum2 = calculate(39000, 7);
-// console.log(`Сумма покупки более 30 000 ₽. Применена скидка 15% на превышение. Итоговая сумма ${totalSum2}₽`);
+// console.log(`Сумма покупки более ${bigSum} ₽. Применена скидка ${discountToSum * 100}%% на превышение. Итоговая сумма ${totalSum2}₽`);
 
 // const totalSum3 = calculate(39000, 17);
-// console.log(`Сумма покупки более 30 000 ₽ и больше 10 товаров. Применена скидка скидка 3% на всю сумму и 15% на превышение. Итоговая сумма ${totalSum3}₽`);
+// console.log(`Сумма покупки более ${bigSum} ₽ и больше ${amount} товаров. Применена скидка скидка ${discountToAmount * 100}%% на всю сумму и  ${discountToSum * 100% на превышение. Итоговая сумма ${totalSum3}₽`);
 
 // const totalSum4 = calculate(9000, 5, 'METHED');
-// console.log(`У вас учтён промокод "METHED", то есть скидка 10%. Итоговая сумма ${totalSum4}₽`);
+// console.log(`У вас учтён промокод "METHED", то есть скидка ${discountToMethed * 100}%. Итоговая сумма ${totalSum4}₽`);
 
-// const totalSum5 = calculate(39000, 15, 'METHED');
-// console.log(`У вас применены скидки на покупку более 10 товаров на более 30 000 ₽ и учтён промокод "METHED". Итоговая сумма ${totalSum5}₽`);
+const totalSum5 = calculate(39000, 15, 'METHED');
+console.log(`У вас применены скидки на покупку более ${amount} товаров на более ${bigSum} ₽ и учтён промокод "METHED". Итоговая сумма ${totalSum5}₽`);
 
 // const totalSum6 = calculate(9000, 5, 'G3H2Z1');
-// console.log(`У вас применён промокод "G3H2Z1", то есть скидка 500 ₽, так как сумма покупок свыше 2 000 ₽. Итоговая  сумма ${totalSum6} ₽`);
+// console.log(`У вас применён промокод "G3H2Z1", то есть скидка ${discountToPromo} ₽, так как сумма покупок свыше ${minSum} ₽. Итоговая  сумма ${totalSum6} ₽`);
 
 // const totalSum7 = calculate(2050, 11, 'G3H2Z1');
-// console.log(`У вас больше 10 товаров. Применена скидка 3%. Итоговая  сумма ${totalSum7} ₽`);
+// console.log(`У вас больше ${amount} товаров. Применена скидка ${discountToAmount * 100}%. Итоговая  сумма ${totalSum7} ₽`);
