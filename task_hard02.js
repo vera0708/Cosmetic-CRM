@@ -20,5 +20,3 @@ else {
     const minNumber = calcMin(numberOne, numberTwo);
     console.log(`Наименьшее число ${minNumber}`);
 }
-
-
