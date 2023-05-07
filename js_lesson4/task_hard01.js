@@ -4,7 +4,14 @@
 const numberOne = +prompt('Введите любое целое число');
 const numberTwo = +prompt('Введите второе целое число');
 
+let one = 1;
+let two = 1;
+let excess = 1;
+let firstN = 1;
+let twoN = 1;
+
 const calcGcd = (one, two) => {
+
     if (two > one) {
         const firstN = two;
         const twoN = one;
@@ -14,9 +21,9 @@ const calcGcd = (one, two) => {
         const twoN = two;
     }
     do {
-        const excess = (firstN % two);
-        const firstN = two;
-        const two = excess;
+        excess = (firstN % twoN);
+        firstN = twoN;
+        twoN = excess;
     } while (excess !== 0 || excess !== 1)
 
     if (excess === 0) {

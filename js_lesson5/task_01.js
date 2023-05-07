@@ -1,8 +1,6 @@
 'use strict'
 // первая задача:
 
-
-
 console.log('--------------------------------------------------------------');
 let string = '';
 let result = 'a**m  |';
@@ -17,11 +15,15 @@ console.log(result);
 console.log('--------------------------------------------------------------');
 let power = 1;
 
-for (let i = 1; i <= 10; i++) {
-    for (let j = 1; j <= 10; j++) {
+for (let i = 1; i <= 4; i++) {
+    for (let j = 1; j <= 4; j++) {
         power = i ** j;
-        console.log(power);
+        console.log(power + '  |');
+        string += power + ' ';
+
     }
-    // string = i + string.slice(1).padStart(13, ' ');
-    // result = result + string + '|';
+    console.log(string + '**');
+    result = result + string + '|';
+    // console.log(result);
+    console.log('--------------------------------------------------------------');
 }
