@@ -18,7 +18,7 @@ else {
                 return false;
             } else
 
-                for (i = 5; i < integer; i += 2) {
+                for (let i = 5; i < integer; i += 2) {
                     if (integer % i === 0) {
                         console.log('Ваше число не является простым');
                         return false;
