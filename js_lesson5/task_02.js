@@ -2,21 +2,31 @@
 // Вторая задача:
 
 const userNumber = +prompt('Введите целое число больше 1');
-let n = 1000;
 
 if (userNumber < 2 || Number.isFinite(userNumber) === false) {
-    console.log("Вы ввели некоректные данные. Попробуйте ещё раз.")
+    console.log("Вы ввели некоректные данные. Попробуйте ещё раз.");
 }
 else {
     const isPrime = (integer) => {
+        if (integer === 2 || integer === 3) {
+            console.log('Ваше число ЯВЛЯЕТСЯ простым');
+            return true
+        } else
 
-        if (integer % 2 === 0) {
-            // console.log('false');
-            return false;
-        };
+            if (integer % 2 === 0) {
+                console.log('Ваше число не является простым');
+                return false;
+            } else
 
+                for (i = 5; i < integer; i += 2) {
+                    if (integer % i === 0) {
+                        console.log('Ваше число не является простым');
+                        return false;
+                    } else {
+                        console.log('Ваше число ЯВЛЯЕТСЯ простым');
+                        return true
+                    }
+                };
     };
 }
 const primeNumber = isPrime(userNumber);
-
-console.log(primeNumber);
