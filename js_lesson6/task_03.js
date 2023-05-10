@@ -6,11 +6,11 @@ const names = ['Noah', 'Liam', 'Mason', 'Jacob', 'Robot', 'William', 'Ethan', 'M
 const prefNames = [];
 
 const addPrefix = (arr, pref) => {
-    const prefNames = arr.join('Mr');
-    console.log(pref);
-    console.log(prefNames);
+    for (let i = 0; i < arr.length; i++) {
+        const element = '\'' + pref + ' ' + arr[i] + '\'';
+        prefNames.push(element);
+    }
+    console.log(prefNames.join(', '));
 }
 
 addPrefix(names, 'Mr');
-
-console.log(prefNames);
