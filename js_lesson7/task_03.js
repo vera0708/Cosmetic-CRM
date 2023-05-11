@@ -21,11 +21,9 @@ const generateRandomNum = (num, one, two, alt) => {
         minValue = two;
     }
 
-    console.log(`alt:   `, alt);
     let element;
     while (randomArr.length < num) {
         element = Math.round(Math.random() * (maxValue - minValue + 1)) + minValue;
-        console.log(`element:   `, element);
 
         if (alt === 'even' && !(element % 2)) {
             randomArr.push(element);
