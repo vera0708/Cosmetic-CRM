@@ -9,7 +9,7 @@ let maxValue;
 const leapYearArr = [];
 
 
-const calculateLeapYear = (one, two) => {
+const getLeapYears = (one, two) => {
     if (two > one) {
         maxValue = two;
         minValue = one;
@@ -31,5 +31,5 @@ if (Number.isFinite(limitOne) === false ||
     Number.isFinite(limitTwo) === false) {
     console.log("Вы ввели некорректную информацию")
 } else {
-    calculateLeapYear(limitOne, limitTwo);
+    getLeapYears(limitOne, limitTwo);
 }
