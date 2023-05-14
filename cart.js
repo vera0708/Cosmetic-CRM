@@ -1,3 +1,5 @@
+// Первая задача:
+
 const cart = {
     items: [],
     get totalPrice() {
