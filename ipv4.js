@@ -1,4 +1,4 @@
-const listIPv4 = [
+export const listIPv4 = [
   "10.90.112.24",
   "10.64.146.250",
   "10.215.63.84",
@@ -24446,4 +24446,6 @@ const listIPv4 = [
   "10.0.32.20"
 ];
 
-export default listIPv4;
+console.log(listIPv4);
+
+// export default listIPv4;
