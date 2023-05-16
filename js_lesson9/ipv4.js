@@ -24447,3 +24447,5 @@ export const listIPv4 = [
 ];
 
 console.log(listIPv4);
+
+//  <script type="module" src="js_lesson9/ipv4.js"></script> 
