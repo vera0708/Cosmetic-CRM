@@ -1,5 +1,5 @@
 'use strict'
-// Вторая дополнительная задача:
+// Первая задача на рекурсию:
 
 const userNumberOne = +prompt('Введите любое число');
 const userNumberTwo = +prompt('Введите ещё одно число');
