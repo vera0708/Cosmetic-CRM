@@ -1,4 +1,4 @@
-// 'use strict'
+'use strict'
 // Вторая задача:
 
 import { listIPv4 } from './ipv4.js';

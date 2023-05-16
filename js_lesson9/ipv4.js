@@ -24447,5 +24447,3 @@ export const listIPv4 = [
 ];
 
 console.log(listIPv4);
-
-// export default listIPv4;
