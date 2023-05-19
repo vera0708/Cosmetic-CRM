@@ -24,7 +24,7 @@ if ((maxValue === 100) && (minValue === 50)) {
 }
 // console.log(`попыток: ${attempts}`);
 
-const myNumber = Math.round(Math.random() * (maxValue - minValue + 1)) + minValue;
+const myNumber = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
 // console.log(`загаданно число: ${myNumber}`);
 
 const guessNumber = (num) => {

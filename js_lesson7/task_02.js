@@ -31,7 +31,7 @@ if (userNumber < 0 ||
     Number.isFinite(userNumber) === false ||
     Number.isFinite(limitOne) === false ||
     Number.isFinite(limitTwo) === false) {
-    console.log("Вы ввели некорректную информацию")
+    console.log(`Вы ввели некорректную информацию`)
 } else {
     generateRandomNum(userNumber, limitOne, limitTwo);
 }
