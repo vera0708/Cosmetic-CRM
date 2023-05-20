@@ -15,7 +15,7 @@ const generateRandomNum = (num) => {
 }
 
 if (userNumber < 0 || Number.isFinite(userNumber) === false) {
-    console.log("Вы ввели некорректную информацию")
+    console.log(`Вы ввели некорректную информацию`)
 } else {
     generateRandomNum(userNumber);
 

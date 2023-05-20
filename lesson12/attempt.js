@@ -23,52 +23,49 @@ const game = () => {
     let choiceNumber = 0;
     let correctUserChoice = '';
 
-    const userChoice = prompt(`Введите 'камень', 'ножницы' или 'бумага'`);
+    const userChoice = '';
 
     while (userChoice !== null) {
         const userChoice = prompt(`Введите 'камень', 'ножницы' или 'бумага'`);
+
         const computerNumber = (Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue);
 
         const getStringChoice = (num) => {
             if (num === 1) {
-                return anyChoice = 'бумага';
+                return anyChoice = FIGURE_RUS[2];
             }
             if (num === 2) {
-                return anyChoice = 'ножницы';
+                return anyChoice = FIGURE_RUS[1];
             }
             if (num === 3) {
-                return anyChoice = 'камень';
+                return anyChoice = FIGURE_RUS[0];
             }
         };
         const computerChoice = getStringChoice(computerNumber);
         console.log(`Компьютер загадал '${computerChoice}'`);
 
         const returnNumberChoice = (text) => {
-            if (text.toLowerCase() === 'камень' || text.toLowerCase() === 'камен'
-                || text.toLowerCase() === 'каме' || text.toLowerCase() === 'кам'
-                || text.toLowerCase() === 'ка' || text.toLowerCase() === 'к') {
+            if (text === null) { return }
+            if (FIGURE_RUS[0].includes(text.toLowerCase())
+            ) {
                 choiceNumber = 3;
                 console.log(`choiceNumber ${choiceNumber}`);
                 return choiceNumber;
             }
-            if (text.toLowerCase() === 'ножницы' || text.toLowerCase() === 'ножниц'
-                || text.toLowerCase() === 'ножни' || text.toLowerCase() === 'ножн'
-                || text.toLowerCase() === 'нож' || text.toLowerCase() === 'но'
-                || text.toLowerCase() === 'н') {
+            if (FIGURE_RUS[1].includes(text.toLowerCase())
+            ) {
                 choiceNumber = 2;
                 console.log(`choiceNumber ${choiceNumber}`);
                 return choiceNumber;
             }
-            if (text.toLowerCase() === 'бумага' || text.toLowerCase() === 'бумаг'
-                || text.toLowerCase() === 'бума' || text.toLowerCase() === 'бум'
-                || text.toLowerCase() === 'бу' || text.toLowerCase() === 'б') {
+            if (FIGURE_RUS[2].includes(text.toLowerCase())
+            ) {
                 choiceNumber = 1;
                 console.log(`choiceNumber ${choiceNumber}`);
                 return choiceNumber;
             }
             else {
                 console.log(`Вы ввели некоректные данные. Попробуйте ещё раз.`);
-                return
             };
         };
         const userNumber = returnNumberChoice(userChoice);
@@ -79,17 +76,17 @@ const game = () => {
 
         if (computerNumber === userNumber) {
             alert(`В этот раз ничья:\n и вы, и компьютер- ${correctUserChoice}.
-            Общий счёт игры: \n вы - ${result.player}, \n компьютер - ${result.computer}`);
+            Общий счёт игры:\nвы - ${result.player},\nкомпьютер - ${result.computer}`);
         } else
             if (computerNumber === 1 && userNumber === 3 || (computerNumber > userNumber)) {
                 result.computer += 1;
                 alert(`В этот раз выиграл компьютер:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
-                Общий счёт игры: \n вы - ${result.player}, \n компьютер - ${result.computer}`);
+                Общий счёт игры:\n вы - ${result.player},\n компьютер - ${result.computer}`);
             } else
                 if (userNumber === 1 && computerNumber === 3 || (userNumber > computerNumber)) {
                     result.player += 1;
                     alert(`В этот раз выиграли вы:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
-                    Общий счёт игры: \n вы - ${result.player},  \n компьютер - ${result.computer}`);
+                    Общий счёт игры:\n вы - ${result.player}, \n компьютер - ${result.computer}`);
                 }
     };
 }
