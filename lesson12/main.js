@@ -1,5 +1,5 @@
 'use strict'
-// Первая задача:
+// Первая обязательная задача:
 
 const startGame = window.RSP();
 startGame();
