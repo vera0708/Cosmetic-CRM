@@ -29,8 +29,7 @@ const game = (language) => {
             if (language === 'EN' || language === 'ENG') {
                 const beSure = confirm(`Are you sure to leave the game?`);
                 if (beSure == true) {
-                    console.log(`Game over!\nThe final score:\n you - ${result.player}, computer - ${result.computer}`);
-                    return
+                    return console.log(`Game over!\nThe final score:\n you - ${result.player}, computer - ${result.computer}`);
                 }
             } else {
                 const beSure = confirm(`Вы точно хотите выйти?`);

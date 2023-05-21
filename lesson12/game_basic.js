@@ -24,8 +24,7 @@
                 if (lastChoice === null) {
                     const beSure = confirm(`Вы точно хотите выйти?`);
                     if (beSure == true) {
-                        console.log(`Игра окончена!\nОбщий счёт игры:\n вы - ${result.player}, компьютер - ${result.computer}`);
-                        return
+                        return console.log(`Игра окончена!\nОбщий счёт игры:\n вы - ${result.player}, компьютер - ${result.computer}`);
                     }
                 } else {
                     const array = FIGURE_RUS;
