@@ -39,7 +39,7 @@
                             }
                         };
                         if (choiceNumber === 0) {
-                            console.log(`Вы ввели некоректные данные. Попробуйте ещё раз.`);
+                            console.log(`Вы ввели некорректные данные. Попробуйте ещё раз.`);
                         };
                     };
                     const userNumber = getNumberChoice(lastChoice);

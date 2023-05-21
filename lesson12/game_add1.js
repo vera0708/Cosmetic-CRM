@@ -18,11 +18,11 @@
             const array = language === 'EN' || language === 'ENG'
                 ? FIGURE_ENG : FIGURE_RUS;
 
-            let correctUserChoice = '';
-
             const userChoice = language === 'EN' || language === 'ENG'
                 ? prompt(`Enter '${array[0]}', '${array[1]}' or '${array[2]}'`)
                 : prompt(`Введите '${array[0]}', '${array[1]}' или '${array[2]}'`);
+
+            let correctUserChoice = '';
 
             const playRSP = (lastChoice) => {
 
@@ -42,7 +42,7 @@
                             }
                         };
                         if (choiceNumber === 0) {
-                            console.log(`Вы ввели некоректные данные. Попробуйте ещё раз.`);
+                            console.log(`Вы ввели некорректные данные. Попробуйте ещё раз.`);
                         };
                     };
                     const userNumber = getNumberChoice(lastChoice);
