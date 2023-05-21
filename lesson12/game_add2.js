@@ -1,5 +1,5 @@
 'use strict'
-// Первая задача:
+// Третья дополнительная задача:
 
 const FIGURE_ENG = ['rock', 'scissors', 'paper'];
 const FIGURE_RUS = ['камень', 'ножницы', 'бумага'];
@@ -15,16 +15,18 @@ const result = {
     player: 0,
     computer: 0,
 };
-const userChoice = '';
-// const game = (language) => {
-const game = () => {
-    // const lang = language === 'EN' || language === 'ENG'
-    //     ? FIGURE_ENG : FIGURE_RUS;
+
+const game = (language) => {
+    const array = language === 'EN' || language === 'ENG'
+        ? FIGURE_ENG : FIGURE_RUS;
     //     return function start() {
+    console.log(array);
 
     let correctUserChoice = '';
 
-    const userChoice = prompt(`Введите 'камень', 'ножницы' или 'бумага'`);
+    const userChoice = language === 'EN' || language === 'ENG'
+        ? prompt(`Enter '${array[0]}', '${array[1]}' or '${array[2]}'`)
+        : prompt(`Введите '${array[0]}', '${array[1]}' или '${array[2]}'`);
     console.log(`Вопрос до рекурсии это userChoice ${userChoice}`);
 
     const playRSP = (lastChoice) => {
@@ -37,8 +39,6 @@ const game = () => {
                 return
             }
         } else {
-            const array = FIGURE_RUS;
-
             let choiceNumber = 0;
             const getNumberChoice = (text) => {
                 for (let i = 0; i < array.length; i++) {
@@ -94,7 +94,9 @@ const game = () => {
                             }
         };
 
-        const userChoice = prompt(`Введите 'камень', 'ножницы' или 'бумага'`);
+        const userChoice = language === 'EN' || language === 'ENG'
+            ? prompt(`Enter '${array[0]}', '${array[1]}' or '${array[2]}'`)
+            : prompt(`Введите '${array[0]}', '${array[1]}' или '${array[2]}'`);
         console.log(`Это последняя строка. Далее передаётся '${userChoice}'`);
 
         playRSP(userChoice);
@@ -102,4 +104,5 @@ const game = () => {
     playRSP(userChoice);
 };
 
-game();
+const lang = prompt(`Введите 'ENG' или 'EN' если хотите играть на английском\n в любом другом случае игра будет на русском`);
+game(lang);

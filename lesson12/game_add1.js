@@ -1,7 +1,8 @@
 'use strict'
-    // Первая обязательная задача:
+    // Вторая дополнительная задача:
 
     (() => {
+        const FIGURE_ENG = ['rock', 'scissors', 'paper'];
         const FIGURE_RUS = ['камень', 'ножницы', 'бумага'];
 
         let minValue = 1;
@@ -13,11 +14,15 @@
             computer: 0,
         };
 
-        const game = () => {
+        const game = (language) => {
+            const array = language === 'EN' || language === 'ENG'
+                ? FIGURE_ENG : FIGURE_RUS;
 
             let correctUserChoice = '';
 
-            const userChoice = prompt(`Введите 'камень', 'ножницы' или 'бумага'`);
+            const userChoice = language === 'EN' || language === 'ENG'
+                ? prompt(`Enter '${array[0]}', '${array[1]}' or '${array[2]}'`)
+                : prompt(`Введите '${array[0]}', '${array[1]}' или '${array[2]}'`);
 
             const playRSP = (lastChoice) => {
 
@@ -28,8 +33,6 @@
                         return
                     }
                 } else {
-                    const array = FIGURE_RUS;
-
                     let choiceNumber = 0;
                     const getNumberChoice = (text) => {
                         for (let i = 0; i < array.length; i++) {
@@ -81,13 +84,14 @@
                     Общий счёт игры:\n вы - ${result.player}, \n компьютер - ${result.computer}`);
                                     }
                 };
-                const userChoice = prompt(`Введите 'камень', 'ножницы' или 'бумага'`);
+
+                const userChoice = language === 'EN' || language === 'ENG'
+                    ? prompt(`Enter '${array[0]}', '${array[1]}' or '${array[2]}'`)
+                    : prompt(`Введите '${array[0]}', '${array[1]}' или '${array[2]}'`);
 
                 playRSP(userChoice);
             };
-
             playRSP(userChoice);
         };
-        // game();
-        window.RSP = game;
+        window.RSP1 = game;
     })();
