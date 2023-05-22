@@ -4,8 +4,8 @@
 const FIGURE_ENG = ['rock', 'scissors', 'paper'];
 const FIGURE_RUS = ['камень', 'ножницы', 'бумага'];
 
-let minValue = 1;
-let maxValue = 3;
+const minValue = 1;
+const maxValue = 3;
 let userNumber = 0;
 let anyChoice = '';
 
@@ -69,55 +69,59 @@ const game = (language) => {
 
             correctUserChoice = getStringChoice(userNumber);
 
-            if (computerNumber === userNumber) {
-                if (language === 'EN' || language === 'ENG') {
-                    alert(`This outcome:\n you as well computer- ${correctUserChoice}.
-            The final score:\nyou - ${result.player},\ncomputer - ${result.computer}`);
-                } else {
-                    alert(`В этот раз ничья:\n и вы, и компьютер- ${correctUserChoice}.
-            Общий счёт игры:\nвы - ${result.player},\nкомпьютер - ${result.computer}`);
-                }
-            } else
-                if (computerNumber === 1 && userNumber === 3) {
-                    result.computer += 1;
+            const compareNumbers = (number1, number2) => {
+                if (number1 === number2) {
                     if (language === 'EN' || language === 'ENG') {
-                        alert(`This time computer win.:\n you -'${correctUserChoice}', computer - '${computerChoice}'. 
-                The final score:\nyou - ${result.player},\n computer - ${result.computer}`);
+                        alert(`This outcome:\n you as well computer- ${correctUserChoice}.
+            The final score:\nyou - ${result.player},\ncomputer - ${result.computer}`);
                     } else {
-                        alert(`В этот раз выиграл компьютер:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
-                Общий счёт игры:\n вы - ${result.player},\n компьютер - ${result.computer}`);
+                        alert(`В этот раз ничья:\n и вы, и компьютер- ${correctUserChoice}.
+            Общий счёт игры:\nвы - ${result.player},\nкомпьютер - ${result.computer}`);
                     }
                 } else
-                    if (userNumber === 1 && computerNumber === 3) {
-                        result.player += 1;
+                    if (number1 === 1 && number2 === 3) {
+                        result.computer += 1;
                         if (language === 'EN' || language === 'ENG') {
-                            alert(`This time you win.:\n you -'${correctUserChoice}', computer - '${computerChoice}'. 
+                            alert(`This time computer wins.:\n you -'${correctUserChoice}', computer - '${computerChoice}'. 
                 The final score:\nyou - ${result.player},\n computer - ${result.computer}`);
                         } else {
-                            alert(`В этот раз выиграли вы:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
-                    Общий счёт игры:\n вы - ${result.player}, \n компьютер - ${result.computer}`);
+                            alert(`В этот раз выиграл компьютер:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
+                Общий счёт игры:\n вы - ${result.player},\n компьютер - ${result.computer}`);
                         }
                     } else
-                        if (computerNumber > userNumber) {
-                            result.computer += 1;
+                        if (number2 === 1 && number1 === 3) {
+                            result.player += 1;
                             if (language === 'EN' || language === 'ENG') {
-                                alert(`This time computer win.:\n you -'${correctUserChoice}', computer - '${computerChoice}'. 
+                                alert(`This time you win.:\n you -'${correctUserChoice}', computer - '${computerChoice}'. 
                 The final score:\nyou - ${result.player},\n computer - ${result.computer}`);
                             } else {
-                                alert(`В этот раз выиграл компьютер:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
-                Общий счёт игры:\n вы - ${result.player},\n компьютер - ${result.computer}`);
+                                alert(`В этот раз выиграли вы:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
+                    Общий счёт игры:\n вы - ${result.player}, \n компьютер - ${result.computer}`);
                             }
                         } else
-                            if (userNumber > computerNumber) {
-                                result.player += 1;
+                            if (number1 > number2) {
+                                result.computer += 1;
                                 if (language === 'EN' || language === 'ENG') {
-                                    alert(`This time you win.:\n you -'${correctUserChoice}', computer - '${computerChoice}'. 
+                                    alert(`This time computer wins.:\n you -'${correctUserChoice}', computer - '${computerChoice}'. 
                 The final score:\nyou - ${result.player},\n computer - ${result.computer}`);
                                 } else {
-                                    alert(`В этот раз выиграли вы:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
-                    Общий счёт игры:\n вы - ${result.player}, \n компьютер - ${result.computer}`);
+                                    alert(`В этот раз выиграл компьютер:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
+                Общий счёт игры:\n вы - ${result.player},\n компьютер - ${result.computer}`);
                                 }
-                            }
+                            } else
+                                if (number2 > number1) {
+                                    result.player += 1;
+                                    if (language === 'EN' || language === 'ENG') {
+                                        alert(`This time you win.:\n you -'${correctUserChoice}', computer - '${computerChoice}'. 
+                The final score:\nyou - ${result.player},\n computer - ${result.computer}`);
+                                    } else {
+                                        alert(`В этот раз выиграли вы:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
+                    Общий счёт игры:\n вы - ${result.player}, \n компьютер - ${result.computer}`);
+                                    }
+                                };
+            };
+
+            compareNumbers(computerNumber, userNumber);
         };
 
         const userChoice = language === 'EN' || language === 'ENG'
