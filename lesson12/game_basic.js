@@ -1,94 +1,95 @@
-'use strict'
-    // Первая обязательная задача:
+'use strict';
+// Первая обязательная задача:
 
-    (() => {
-        const FIGURE_RUS = ['камень', 'ножницы', 'бумага'];
+window.RSP = (() => {
+    const FIGURE_RUS = ['камень', 'ножницы', 'бумага'];
 
-        const minValue = 1;
-        const maxValue = 3;
-        let anyChoice = '';
+    const minValue = 1;
+    const maxValue = 3;
+    let anyChoice = '';
 
-        const result = {
-            player: 0,
-            computer: 0,
-        };
+    const result = {
+        player: 0,
+        computer: 0,
+    };
 
-        const game = () => {
+    const game = () => {
 
-            let correctUserChoice = '';
+        let correctUserChoice = '';
 
-            const userChoice = prompt(`Введите 'камень', 'ножницы' или 'бумага'`);
+        const userChoice = prompt(`Введите 'камень', 'ножницы' или 'бумага'`);
 
-            const playRSP = (lastChoice) => {
+        const playRSP = (lastChoice) => {
 
-                if (lastChoice === null) {
-                    const beSure = confirm(`Вы точно хотите выйти?`);
-                    if (beSure == true) {
-                        return console.log(`Игра окончена!\nОбщий счёт игры:\n вы - ${result.player}, компьютер - ${result.computer}`);
-                    }
-                } else {
-                    const array = FIGURE_RUS;
+            if (lastChoice === null) {
+                const beSure = confirm(`Вы точно хотите выйти?`);
+                if (beSure == true) {
+                    return console.log(`Игра окончена!\nОбщий счёт игры:\n вы - ${result.player}, компьютер - ${result.computer}`);
+                }
+            } else {
+                const array = FIGURE_RUS;
 
-                    let choiceNumber = 0;
-                    const getNumberChoice = (text) => {
-                        for (let i = 0; i < array.length; i++) {
-                            if (array[i].includes(text.toLowerCase())) {
-                                choiceNumber = array.length - i;
-                                return choiceNumber;
-                            }
-                        };
-                        if (choiceNumber === 0) {
-                            console.log(`Вы ввели некорректные данные. Попробуйте ещё раз.`);
-                        };
-                    };
-                    const userNumber = getNumberChoice(lastChoice);
-
-                    const computerNumber = (Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue);
-                    const getStringChoice = (num) => {
-                        for (let i = 0; i < array.length; i++) {
-                            if (num === i + 1) {
-                                return anyChoice = array[array.length - num];
-                            }
+                let choiceNumber = 0;
+                const getNumberChoice = (text) => {
+                    for (let i = 0; i < array.length; i++) {
+                        if (array[i].includes(text.toLowerCase())) {
+                            choiceNumber = array.length - i;
+                            return choiceNumber;
                         }
                     };
-                    const computerChoice = getStringChoice(computerNumber);
-
-                    correctUserChoice = getStringChoice(userNumber);
-
-                    const compareNumbers = (number1, number2) => {
-                        if (number1 === number2) {
-                            alert(`В этот раз ничья:\n и вы, и компьютер- ${correctUserChoice}.\nОбщий счёт игры:\nвы - ${result.player},\nкомпьютер - ${result.computer}`);
-                        } else
-                            if (number1 === 1 && number2 === 3) {
-                                result.computer += 1;
-                                alert(`В этот раз выиграл компьютер:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
-                                Общий счёт игры:\n вы - ${result.player},\n компьютер - ${result.computer}`);
-                            } else
-                                if (number2 === 1 && number1 === 3) {
-                                    result.player += 1;
-                                    alert(`В этот раз выиграли вы:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
-                                    Общий счёт игры:\n вы - ${result.player}, \n компьютер - ${result.computer}`);
-                                } else
-                                    if (number1 > number2) {
-                                        result.computer += 1;
-                                        alert(`В этот раз выиграл компьютер:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
-                                        Общий счёт игры:\n вы - ${result.player},\n компьютер - ${result.computer}`);
-                                    } else
-                                        if (number2 > number1) {
-                                            result.player += 1;
-                                            alert(`В этот раз выиграли вы:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
-                                             Общий счёт игры:\n вы - ${result.player}, \n компьютер - ${result.computer}`);
-                                        }
+                    if (choiceNumber === 0) {
+                        console.log(`Вы ввели некорректные данные. Попробуйте ещё раз.`);
                     };
-                    compareNumbers(computerNumber, userNumber);
                 };
-                const userChoice = prompt(`Введите 'камень', 'ножницы' или 'бумага'`);
+                const userNumber = getNumberChoice(lastChoice);
 
-                playRSP(userChoice);
+                const computerNumber = (Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue);
+                const getStringChoice = (num) => {
+                    for (let i = 0; i < array.length; i++) {
+                        if (num === i + 1) {
+                            return anyChoice = array[array.length - num];
+                        }
+                    }
+                };
+                const computerChoice = getStringChoice(computerNumber);
+
+                correctUserChoice = getStringChoice(userNumber);
+
+                const compareNumbers = (number1, number2) => {
+                    if (number1 === number2) {
+                        alert(`В этот раз ничья:\n и вы, и компьютер- ${correctUserChoice}.\nОбщий счёт игры:\nвы - ${result.player},\nкомпьютер - ${result.computer}`);
+                    } else
+                        if (number1 === 1 && number2 === 3) {
+                            result.computer += 1;
+                            alert(`В этот раз выиграл компьютер:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
+                                Общий счёт игры:\n вы - ${result.player},\n компьютер - ${result.computer}`);
+                        } else
+                            if (number2 === 1 && number1 === 3) {
+                                result.player += 1;
+                                alert(`В этот раз выиграли вы:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
+                                    Общий счёт игры:\n вы - ${result.player}, \n компьютер - ${result.computer}`);
+                            } else
+                                if (number1 > number2) {
+                                    result.computer += 1;
+                                    alert(`В этот раз выиграл компьютер:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
+                                        Общий счёт игры:\n вы - ${result.player},\n компьютер - ${result.computer}`);
+                                } else
+                                    if (number2 > number1) {
+                                        result.player += 1;
+                                        alert(`В этот раз выиграли вы:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
+                                             Общий счёт игры:\n вы - ${result.player}, \n компьютер - ${result.computer}`);
+                                    }
+                };
+                compareNumbers(computerNumber, userNumber);
             };
+            const userChoice = prompt(`Введите 'камень', 'ножницы' или 'бумага'`);
 
             playRSP(userChoice);
         };
-        // game();
-        window.RSP = game;
-    })();
+
+        playRSP(userChoice);
+    };
+    return {
+        game,
+    };
+})();
