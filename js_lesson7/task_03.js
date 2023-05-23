@@ -45,9 +45,9 @@ if (userNumber < 0 ||
     console.log(`Вы ввели некорректную информацию`)
 } else {
     if (option === 'odd' || option === 'even') {
-        generateRandomNum(userNumber, limitOne, limitTwo, option)
+        generateRandomNum(userNumber, limitOne, limitTwo, option);
     }
     else {
-        console.log(`Для выбора чётного / нечётного массива введите even или odd`)
+        console.log(`Для выбора чётного / нечётного массива введите even или odd`);
     }
 }
