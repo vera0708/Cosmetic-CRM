@@ -10,7 +10,6 @@ let minValue;
 let maxValue;
 const randomArr = [];
 
-
 const generateRandomNum = (num, one, two, alt) => {
     if (two > one) {
         maxValue = two;
