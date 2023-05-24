@@ -39,6 +39,8 @@ window.RSP = (() => {
                     };
                     if (choiceNumber === 0) {
                         console.log(`Вы ввели некорректные данные. Попробуйте ещё раз.`);
+                        const userChoice = prompt(`Введите 'камень', 'ножницы' или 'бумага'`);
+                        getNumberChoice(userChoice);
                     };
                 };
                 const userNumber = getNumberChoice(lastChoice);
@@ -59,26 +61,15 @@ window.RSP = (() => {
                     if (number1 === number2) {
                         alert(`В этот раз ничья:\n и вы, и компьютер- ${correctUserChoice}.\nОбщий счёт игры:\nвы - ${result.player},\nкомпьютер - ${result.computer}`);
                     } else
-                        if (number1 === 1 && number2 === 3) {
+                        if ((number1 === 1 && number2 === 3) || (number1 === 3 && number2 === 2) || (number1 === 2 && number2 === 1)) {
                             result.computer += 1;
                             alert(`В этот раз выиграл компьютер:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
                                 Общий счёт игры:\n вы - ${result.player},\n компьютер - ${result.computer}`);
-                        } else
-                            if (number2 === 1 && number1 === 3) {
-                                result.player += 1;
-                                alert(`В этот раз выиграли вы:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
+                        } else {
+                            result.player += 1;
+                            alert(`В этот раз выиграли вы:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
                                     Общий счёт игры:\n вы - ${result.player}, \n компьютер - ${result.computer}`);
-                            } else
-                                if (number1 > number2) {
-                                    result.computer += 1;
-                                    alert(`В этот раз выиграл компьютер:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
-                                        Общий счёт игры:\n вы - ${result.player},\n компьютер - ${result.computer}`);
-                                } else
-                                    if (number2 > number1) {
-                                        result.player += 1;
-                                        alert(`В этот раз выиграли вы:\n вы -'${correctUserChoice}', компьютер - '${computerChoice}'. 
-                                             Общий счёт игры:\n вы - ${result.player}, \n компьютер - ${result.computer}`);
-                                    }
+                        }
                 };
                 compareNumbers(computerNumber, userNumber);
             };
