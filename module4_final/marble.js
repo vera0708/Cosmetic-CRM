@@ -3,7 +3,7 @@
 const FIGURE_RUS = ['камень', 'ножницы', 'бумага'];
 
 let anyChoice = '';
-let priority;
+let priority = 2;
 const minValue = 1;
 const maxValue = 3;
 const minBalls = 1;
@@ -70,39 +70,31 @@ const ballsCount = {
 // console.log(`whoIsTheFirst: ${claim}`);
 // getPriority(claim);
 
+
 // Игрок загадывает число. Компьютер отгадывает чётность
 const startPlayerGame = () => {
     const playerChoice = +prompt(`Введите количество шариков от 1 до ${ballsCount.player}`);
-    if (playerChoice < 1 || playerChoice > ballsCount.player || Number.isFinite(playerChoice) === false) {
-        console.log(`Количество шариков не соответствует требованию. Попробуйте ещё раз.`);
+    console.log(`playerChoice! ${playerChoice}`);
+    if (playerChoice === 0) {
+        const beSure = confirm(`Вы точно хотите выйти?`);
+        if (beSure == true) {
+            return console.log(`До свидания!`);
+        }
     } else {
-        const computerOneOrTwo = (Math.floor(Math.random() * (ballsCount.computer - minBalls + 1)) + minBalls);
-        console.log(`computerOneOrTwo: ${computerOneOrTwo}`);
-        checkPlayerChoice(computerOneOrTwo, playerChoice);
-        closeGame();
+        if (playerChoice < 1 || playerChoice > ballsCount.player || Number.isFinite(playerChoice) === false) {
+            console.log(`Количество шариков не соответствует требованию. Попробуйте ещё раз.`);
+            startPlayerGame();
+        } else {
+            const computerOneOrTwo = (Math.floor(Math.random() * (ballsCount.computer - minBalls + 1)) + minBalls);
+            console.log(`computerOneOrTwo: ${computerOneOrTwo}`);
+            checkPlayerChoice(computerOneOrTwo, playerChoice);
+            closeGame();
+        }
     }
-}
-// Компьютер загадывает число. Игрок отгадывает чётность
-let playerParity;
-const startComputerGame = () => {
-    const computerNumber = (Math.floor(Math.random() * (ballsCount.computer - minBalls + 1)) + minBalls);
-    const playerOption = prompt(`Введите 'even', если думаете, что компьютер загадал \nчётное число, и 'odd' -нечётное`);
-    if (playerOption === 'odd') {
-        playerParity = 1;
-        console.log(`Выбрано 'odd', playerParity ${playerParity}`);
-    } else if (playerOption === 'even') {
-        playerParity = 2;
-        console.log(`Выбрано 'even', playerParity ${playerParity}`);
-    }
-    else {
-        confirm(`Для чётного / нечётного выбора введите even или odd`);
-    }
-    checkComputerChoice(computerNumber, playerParity);
-    closeGame();
-}
+};
 // Проверка совпадения чётности с числом игрока 
 const checkPlayerChoice = (computerParity, playerMove) => {
-    if (((computerParity % 2) && (playerMove % 2)) || (!(computerParity % 2) && !(playerMove % 2))) {
+    if (((computerParity % 2 === 0) && (playerMove % 2 === 0)) || ((computerParity % 2 !== 0) && (playerMove % 2 !== 0))) {
         console.log(`computer угадал, нужно + ${playerMove} к его ${ballsCount.computer}`);
         ballsCount.computer += playerMove;
         ballsCount.player -= playerMove;
@@ -113,9 +105,38 @@ const checkPlayerChoice = (computerParity, playerMove) => {
     };
     console.log(`ballsCount.computer: ${ballsCount.computer}, ballsCount.player: ${ballsCount.player}`);
 }
+
+// Компьютер загадывает число. Игрок отгадывает чётность
+let playerParity;
+const startComputerGame = () => {
+    const computerNumber = (Math.floor(Math.random() * (ballsCount.computer - minBalls + 1)) + minBalls);
+    const playerOption = prompt(`Введите 'even', если думаете, что компьютер загадал \nчётное число, и 'odd' -нечётное`);
+    console.log(`playerOption! ${playerOption}`);
+    if (playerOption === null) {
+        const beSure = confirm(`Вы точно хотите выйти?`);
+        if (beSure == true) {
+            return console.log(`До свидания!`);
+        } else { startComputerGame() }
+    } else {
+        if (playerOption === 'odd') {
+            playerParity = 1;
+            console.log(`Выбрано 'odd', playerParity ${playerParity}`);
+        } else if (playerOption === 'even') {
+            playerParity = 2;
+            console.log(`Выбрано 'even', playerParity ${playerParity}`);
+        }
+        else {
+            confirm(`Для чётного / нечётного выбора введите even или odd`);
+            startComputerGame();
+        }
+    };
+    checkComputerChoice(computerNumber, playerParity);
+    closeGame();
+}
+
 // Проверка совпадения чётности с числом компьютера
 const checkComputerChoice = (playePar, computerMove) => {
-    if (((playePar % 2) && (computerMove % 2)) || (!(playePar % 2) && !(computerMove % 2))) {
+    if (((playePar % 2 === 0) && (computerMove % 2 === 0)) || ((playePar % 2 !== 0) && (computerMove % 2 !== 0))) {
         console.log(`Вы угадали, нужно + ${computerMove} к вашим ${ballsCount.player} шарикам`);
         ballsCount.computer -= computerMove;
         ballsCount.player += computerMove;
@@ -134,7 +155,7 @@ const closeGame = () => {
         const beSure = confirm(`"Хотите сыграть еще?`);
         if (beSure == true) {
             priority += 1;
-            console.log(`priority - ${priority}`);
+            console.log(`priority = ${priority}`);
             getPriority(priority);
         }
     } else if (ballsCount.player <= 0) {
@@ -142,12 +163,12 @@ const closeGame = () => {
         const beSure = confirm(`"Хотите сыграть еще?`);
         if (beSure == true) {
             priority += 1;
-            console.log(`priority - ${priority}`);
+            console.log(`priority = ${priority}`);
             getPriority(priority);
         }
     } else {
         priority += 1;
-        console.log(`priority - ${priority}`);
+        console.log(`priority = ${priority}`);
         getPriority(priority);
     }
 };
@@ -155,12 +176,15 @@ const closeGame = () => {
 // Установление очерёдности 
 let prior;
 const getPriority = (prior) => {
-    if (!(prior % 2)) {
-        startPlayerGame();
+    console.log(`зашли в getPriority c prior ${prior}`);
+    if ((prior % 2) === 0) {
+        console.log(`Вызываем startComputerGame с ${prior}`);
+        startComputerGame();
 
     } else {
-        startComputerGame();
+        console.log(`Вызываем startPlayerGame с ${prior}`);
+        startPlayerGame();
     }
-}
-
+};
 getPriority(priority);
+
