@@ -12,64 +12,55 @@ const ballsCount = {
     player: 5,
 };
 //  Игрой 'Камень, ножницы, бумага' определяем кто первый ходит в Марблах: игрок или компьютер
-// const userChoice = prompt(`Введите 'камень', 'ножницы' или 'бумага'`);
-// const computerNumber = (Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue);
+const userChoice = prompt(`Введите 'камень', 'ножницы' или 'бумага'`);
+const computerNumber = (Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue);
 
-// const whoIsTheFirst = (theChoice) => {
-//     let choiceNumber = 0;
-//     const getNumberChoice = (text) => {
-//         for (let i = 0; i < FIGURE_RUS.length; i++) {
-//             if (FIGURE_RUS[i].includes(text.toLowerCase())) {
-//                 choiceNumber = FIGURE_RUS.length - i;
-//                 return choiceNumber;
-//             }
-//         };
-//         if (choiceNumber === 0) {
-//             alert(`Вы ввели некорректные данные. Попробуйте ещё раз.`);
-//             const nextChoice = prompt(`Введите 'камень', 'ножницы' или 'бумага'`);
-//             return getNumberChoice(nextChoice);
-//         };
-//     };
-//     const userNumber = getNumberChoice(theChoice);
+const whoIsTheFirst = (theChoice) => {
+    let choiceNumber = 0;
+    const getNumberChoice = (text) => {
+        for (let i = 0; i < FIGURE_RUS.length; i++) {
+            if (FIGURE_RUS[i].includes(text.toLowerCase())) {
+                choiceNumber = FIGURE_RUS.length - i;
+                return choiceNumber;
+            }
+        };
+        if (choiceNumber === 0) {
+            alert(`Вы ввели некорректные данные. Попробуйте ещё раз.`);
+            const nextChoice = prompt(`Введите 'камень', 'ножницы' или 'бумага'`);
+            getNumberChoice(nextChoice);
+        };
+    };
+    const userNumber = getNumberChoice(theChoice);
 
-//     const getStringChoice = (num) => {
-//         for (let i = 0; i < FIGURE_RUS.length; i++) {
-//             if (num === i + 1) {
-//                 return anyChoice = FIGURE_RUS[FIGURE_RUS.length - num];
-//             }
-//         }
-//     };
-//     const computerChoice = getStringChoice(computerNumber);
-//     const correctUserChoice = getStringChoice(userNumber);
+    const getStringChoice = (num) => {
+        for (let i = 0; i < FIGURE_RUS.length; i++) {
+            if (num === i + 1) {
+                return anyChoice = FIGURE_RUS[FIGURE_RUS.length - num];
+            }
+        }
+    };
+    const computerChoice = getStringChoice(computerNumber);
+    const correctUserChoice = getStringChoice(userNumber);
 
-//     const compareNumbers = (number1, number2) => {
-//         if (number1 === number2) {
-//             computerNumber = (Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue);
-//             compareNumbers(computerNumber, userNumber);
-//         } else
-//             if (number1 === 1 && number2 === 3) {
-//                 alert(` вы -'${correctUserChoice}', компьютер - '${computerChoice}'.\n Выиграл компьютер, он начинает`);
-//                return priority = 2;
-//             } else
-//                 if (number2 === 1 && number1 === 3) {
-//                     alert(`вы -'${correctUserChoice}', компьютер - '${computerChoice}'.\n Вы выиграли и начинаете`);
-//                    return priority = 1;
-//                 } else
-//                     if (number1 > number2) {
-//                         alert(`вы -'${correctUserChoice}', компьютер - '${computerChoice}'.\n Выиграл компьютер, он начинает `);
-//                       return priority = 2;
-//                     } else
-//                         if (number2 > number1) {
-//                             alert(` вы -'${correctUserChoice}', компьютер - '${computerChoice}'.\n Вы выиграли и начинаете `);
-//                            return priority = 1;
-//                         }
-//     }
-//     compareNumbers(computerNumber, userNumber);
-// };
-// const claim = whoIsTheFirst(userChoice);
-// console.log(`whoIsTheFirst: ${claim}`);
-// getPriority(claim);
+    const compareNumbers = (number1, number2) => {
+        if (number1 === number2) {
+            computerNumber = (Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue);
+            compareNumbers(computerNumber, userNumber);
+        } else
+            if ((number1 === 1 && number2 === 3) || (number1 === 3 && number2 === 2) || (number1 === 2 && number2 === 1)) {
+                alert(` вы -'${correctUserChoice}', компьютер - '${computerChoice}'.\n Выиграл компьютер, он начинает`);
+                priority = 2;
 
+            } else {
+                alert(`вы -'${correctUserChoice}', компьютер - '${computerChoice}'.\n Вы выиграли и начинаете`);
+                priority = 1;
+            };
+    };
+    compareNumbers(computerNumber, userNumber);
+};
+whoIsTheFirst(userChoice);
+console.log(`priority: ${priority}`);
+// const claim = 1;
 
 // Игрок загадывает число. Компьютер отгадывает чётность
 const startPlayerGame = () => {
@@ -95,15 +86,15 @@ const startPlayerGame = () => {
 // Проверка совпадения чётности с числом игрока 
 const checkPlayerChoice = (computerParity, playerMove) => {
     if (((computerParity % 2 === 0) && (playerMove % 2 === 0)) || ((computerParity % 2 !== 0) && (playerMove % 2 !== 0))) {
-        console.log(`computer угадал, нужно + ${playerMove} к его ${ballsCount.computer}`);
         ballsCount.computer += playerMove;
         ballsCount.player -= playerMove;
+        console.log(`Компьютер угадал чётность загаданного вами числа ${playerMove}.\n Ему переходят ваши ${playerMove} шариков.`);
     } else {
-        console.log(`computer НЕ угадал, нужно + ${playerMove} к вашим ${ballsCount.player}`);
         ballsCount.computer -= playerMove;
         ballsCount.player += playerMove;
+        console.log(`Компьютер НЕ угадал чётность загаданного вами числа ${playerMove}.\n Вам переходят его ${playerMove} шариков.`);
     };
-    console.log(`ballsCount.computer: ${ballsCount.computer}, ballsCount.player: ${ballsCount.player}`);
+    console.log(`Таким образом у компьютера ${ballsCount.computer} шариков, у вас - ${ballsCount.player}.`);
 }
 
 // Компьютер загадывает число. Игрок отгадывает чётность
@@ -130,45 +121,44 @@ const startComputerGame = () => {
             startComputerGame();
         }
     };
-    checkComputerChoice(computerNumber, playerParity);
+    checkComputerChoice(playerParity, computerNumber);
     closeGame();
 }
 
 // Проверка совпадения чётности с числом компьютера
 const checkComputerChoice = (playePar, computerMove) => {
     if (((playePar % 2 === 0) && (computerMove % 2 === 0)) || ((playePar % 2 !== 0) && (computerMove % 2 !== 0))) {
-        console.log(`Вы угадали, нужно + ${computerMove} к вашим ${ballsCount.player} шарикам`);
         ballsCount.computer -= computerMove;
         ballsCount.player += computerMove;
+        console.log(`Вы угадали чётность загаданного компьютером числа ${computerMove}.\n Вам переходят его ${computerMove} шариков.`);
     } else {
-        console.log(`Вы НЕ угадали, нужно + ${computerMove} к его ${ballsCount.computer} шарикам`);
         ballsCount.computer += computerMove;
         ballsCount.player -= computerMove;
+        console.log(`Вы НЕ угадали чётность загаданного компьютером числа ${computerMove}.\n Ему переходят ваши ${computerMove} шариков.`);
     };
-    console.log(`ballsCount.computer: ${ballsCount.computer}, ballsCount.player: ${ballsCount.player}`);
+    console.log(`Таким образом у компьютера ${ballsCount.computer} шариков, у вас - ${ballsCount.player}.`);
 };
+// Подтверждение выхода
+const beSure = () => {
+    const approval = confirm(`Хотите сыграть еще?`);
+    if (approval == true) {
+        ballsCount.computer = 5;
+        ballsCount.player = 5;
+        priority += 1;
+        getPriority(priority);
+    }
+}
 
 // Проверка окончания шариков и соответственно игры
 const closeGame = () => {
     if (ballsCount.computer <= 0) {
         console.log(`Игра окончена!\nУ компьютера закончились шарики.\n У вас ${ballsCount.player} шариков - вы выиграли!`);
-        const beSure = confirm(`"Хотите сыграть еще?`);
-        if (beSure == true) {
-            priority += 1;
-            console.log(`priority = ${priority}`);
-            getPriority(priority);
-        }
+        beSure();
     } else if (ballsCount.player <= 0) {
         console.log(`Игра окончена!\nУ  вас закончились шарики.\n у компьютера ${ballsCount.computer} шариков - он выиграл!`);
-        const beSure = confirm(`"Хотите сыграть еще?`);
-        if (beSure == true) {
-            priority += 1;
-            console.log(`priority = ${priority}`);
-            getPriority(priority);
-        }
+        beSure();
     } else {
         priority += 1;
-        console.log(`priority = ${priority}`);
         getPriority(priority);
     }
 };
@@ -176,7 +166,6 @@ const closeGame = () => {
 // Установление очерёдности 
 let prior;
 const getPriority = (prior) => {
-    console.log(`зашли в getPriority c prior ${prior}`);
     if ((prior % 2) === 0) {
         console.log(`Вызываем startComputerGame с ${prior}`);
         startComputerGame();
