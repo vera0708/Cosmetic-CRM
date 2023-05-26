@@ -2,8 +2,8 @@
 
 const FIGURE_RUS = ['камень', 'ножницы', 'бумага'];
 
-let anyChoice = '';
-let priority = 2;
+// let anyChoice = '';
+let priority = 1;
 const minValue = 1;
 const maxValue = 3;
 const minBalls = 1;
@@ -11,11 +11,12 @@ const ballsCount = {
     computer: 5,
     player: 5,
 };
-//  Игрой 'Камень, ножницы, бумага' определяем кто первый ходит в Марблах: игрок или компьютер
+
+//  Игрой 'Камень, ножницы, бумага' определяем кто первый ходит в Марбл: игрок или компьютер
 const userChoice = prompt(`Введите 'камень', 'ножницы' или 'бумага'`);
-const computerNumber = (Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue);
 
 const whoIsTheFirst = (theChoice) => {
+    const computerNumber = (Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue);
     let choiceNumber = 0;
     const getNumberChoice = (text) => {
         for (let i = 0; i < FIGURE_RUS.length; i++) {
@@ -35,7 +36,7 @@ const whoIsTheFirst = (theChoice) => {
     const getStringChoice = (num) => {
         for (let i = 0; i < FIGURE_RUS.length; i++) {
             if (num === i + 1) {
-                return anyChoice = FIGURE_RUS[FIGURE_RUS.length - num];
+                return FIGURE_RUS[FIGURE_RUS.length - num];
             }
         }
     };
@@ -60,7 +61,6 @@ const whoIsTheFirst = (theChoice) => {
 };
 whoIsTheFirst(userChoice);
 console.log(`priority: ${priority}`);
-// const claim = 1;
 
 // Игрок загадывает число. Компьютер отгадывает чётность
 const startPlayerGame = () => {
@@ -88,13 +88,13 @@ const checkPlayerChoice = (computerParity, playerMove) => {
     if (((computerParity % 2 === 0) && (playerMove % 2 === 0)) || ((computerParity % 2 !== 0) && (playerMove % 2 !== 0))) {
         ballsCount.computer += playerMove;
         ballsCount.player -= playerMove;
-        console.log(`Компьютер угадал чётность загаданного вами числа ${playerMove}.\n Ему переходят ваши ${playerMove} шариков.`);
+        alert(`Компьютер угадал чётность загаданного вами числа ${playerMove}.\n Ему переходят ваши ${playerMove} шариков.`);
     } else {
         ballsCount.computer -= playerMove;
         ballsCount.player += playerMove;
-        console.log(`Компьютер НЕ угадал чётность загаданного вами числа ${playerMove}.\n Вам переходят его ${playerMove} шариков.`);
+        alert(`Компьютер НЕ угадал чётность загаданного вами числа ${playerMove}.\n Вам переходят его ${playerMove} шариков.`);
     };
-    console.log(`Таким образом у компьютера ${ballsCount.computer} шариков, у вас - ${ballsCount.player}.`);
+    alert(`Таким образом у компьютера ${ballsCount.computer} шариков, у вас - ${ballsCount.player}.`);
 }
 
 // Компьютер загадывает число. Игрок отгадывает чётность
@@ -130,13 +130,13 @@ const checkComputerChoice = (playePar, computerMove) => {
     if (((playePar % 2 === 0) && (computerMove % 2 === 0)) || ((playePar % 2 !== 0) && (computerMove % 2 !== 0))) {
         ballsCount.computer -= computerMove;
         ballsCount.player += computerMove;
-        console.log(`Вы угадали чётность загаданного компьютером числа ${computerMove}.\n Вам переходят его ${computerMove} шариков.`);
+        alert(`Вы угадали чётность загаданного компьютером числа ${computerMove}.\n Вам переходят его ${computerMove} шариков.`);
     } else {
         ballsCount.computer += computerMove;
         ballsCount.player -= computerMove;
-        console.log(`Вы НЕ угадали чётность загаданного компьютером числа ${computerMove}.\n Ему переходят ваши ${computerMove} шариков.`);
+        alert(`Вы НЕ угадали чётность загаданного компьютером числа ${computerMove}.\n Ему переходят ваши ${computerMove} шариков.`);
     };
-    console.log(`Таким образом у компьютера ${ballsCount.computer} шариков, у вас - ${ballsCount.player}.`);
+    alert(`Таким образом у компьютера ${ballsCount.computer} шариков, у вас - ${ballsCount.player}.`);
 };
 // Подтверждение выхода
 const beSure = () => {
@@ -144,18 +144,20 @@ const beSure = () => {
     if (approval == true) {
         ballsCount.computer = 5;
         ballsCount.player = 5;
-        priority += 1;
-        getPriority(priority);
+        // priority += 1;
+        // getPriority(priority);
+        const userChoice = prompt(`Введите 'камень', 'ножницы' или 'бумага'`);
+        whoIsTheFirst(userChoice);
     }
 }
 
 // Проверка окончания шариков и соответственно игры
 const closeGame = () => {
     if (ballsCount.computer <= 0) {
-        console.log(`Игра окончена!\nУ компьютера закончились шарики.\n У вас ${ballsCount.player} шариков - вы выиграли!`);
+        console.log(`Игра окончена!\nУ компьютера закончились шарики.\n У вас все 10 шариков - вы выиграли!`);
         beSure();
     } else if (ballsCount.player <= 0) {
-        console.log(`Игра окончена!\nУ  вас закончились шарики.\n у компьютера ${ballsCount.computer} шариков - он выиграл!`);
+        console.log(`Игра окончена!\nУ  вас закончились шарики.\n у компьютера все 10 шариков - он выиграл!`);
         beSure();
     } else {
         priority += 1;
@@ -164,7 +166,6 @@ const closeGame = () => {
 };
 
 // Установление очерёдности 
-let prior;
 const getPriority = (prior) => {
     if ((prior % 2) === 0) {
         console.log(`Вызываем startComputerGame с ${prior}`);
@@ -176,4 +177,8 @@ const getPriority = (prior) => {
     }
 };
 getPriority(priority);
+
+    // const userChoice = prompt(`Введите 'камень', 'ножницы' или 'бумага'`);
+    // whoIsTheFirst(userChoice);
+
 
